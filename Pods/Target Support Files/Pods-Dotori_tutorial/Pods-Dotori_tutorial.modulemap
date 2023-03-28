@@ -1,0 +1,6 @@
+framework module Pods_Dotori_tutorial {
+  umbrella header "Pods-Dotori_tutorial-umbrella.h"
+
+  export *
+  module * { export * }
+}
