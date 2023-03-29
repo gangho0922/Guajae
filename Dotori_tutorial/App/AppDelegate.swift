@@ -10,16 +10,10 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-    var navController: UINavigationController?
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        navController = UINavigationController(rootViewController: ViewController())
-        navController?.navigationBar.isTranslucent = false
-                
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = navController
-        window?.makeKeyAndVisible()
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) -> Bool {
                 
         return true
         //setcontroller를 사용하기 위한 설정

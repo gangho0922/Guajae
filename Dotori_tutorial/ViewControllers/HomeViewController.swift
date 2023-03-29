@@ -12,6 +12,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "메인"
         view.backgroundColor = .white
         addView()
         //전체 addSubView 함수
@@ -21,14 +22,6 @@ class HomeViewController: UIViewController {
     
     
     
-    
-    let MainLabel: UILabel = {
-        let ML = UILabel()
-        ML.text = "메인"
-        ML.textColor = .black
-        ML.font = UIFont.boldSystemFont(ofSize: 17)
-        return ML
-    }()
 
     let BigLabel: UILabel = {
         let BL = UILabel()
@@ -44,7 +37,6 @@ class HomeViewController: UIViewController {
     
     
     func addView() {
-        self.view.addSubview(MainLabel)
         self.view.addSubview(BigLabel)
     }
     //addSubView 정리본
@@ -54,11 +46,6 @@ class HomeViewController: UIViewController {
     
     
     func location() {
-        MainLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(180)
-            make.top.equalToSuperview().inset(50)
-            make.height.equalTo(50)
-        }
         BigLabel.snp.makeConstraints { make in
             make.center.equalTo(view.snp.center)
         }

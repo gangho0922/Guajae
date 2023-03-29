@@ -13,8 +13,11 @@ class ViewController: UIViewController {
     
     var isSecurePassword = true
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "로그인"
         self.view.backgroundColor = .white
         addView()
         //전체 addSubView 함수
@@ -24,10 +27,11 @@ class ViewController: UIViewController {
         //안보이게 버튼 커스텀
         eyeButton.addTarget(self, action: #selector(eyeButtonDidTap(_:)), for: .touchUpInside)
         // 안보이게 버튼을 활성화하기 위해 selector로 eyeButtonDidTap 지정
+        
     }
     
     
-    
+    /// asdsda
     @objc func secondscreen() {
         let SEC = HomeViewController()
         navigationController?.setViewControllers([SEC], animated: true)
@@ -36,6 +40,7 @@ class ViewController: UIViewController {
     @objc func signupscreen() {
         let GOSIGNUP = SignUpViewController()
         navigationController?.pushViewController(GOSIGNUP, animated: true)
+        self.navigationItem.title = ""
     }
     //push 활용 전환 방법
     @objc func presentViewController() {
@@ -76,17 +81,8 @@ class ViewController: UIViewController {
     }
     //비밀번호 안보이거나 보이게 하는 부분
     
+    // MARK: - Properties
     
-    
-    
-    
-    let TitleLabel: UILabel = {
-        let TL = UILabel()
-        TL.text = "로그인"
-        TL.textColor = .black
-        TL.font = UIFont.boldSystemFont(ofSize: 17)
-        return TL
-    }()
     let Dotori_Image: UIImageView = {
         let DI = UIImageView()
         DI.image = UIImage(named: "Dotori_Icon")
@@ -178,7 +174,6 @@ class ViewController: UIViewController {
     
     
     func addView() {
-        self.view.addSubview(TitleLabel)
         self.view.addSubview(Dotori_Image)
         self.view.addSubview(Login_Title_Text)
         self.view.addSubview(Login_Sub_Text)
@@ -195,11 +190,6 @@ class ViewController: UIViewController {
     
     
     func location() {
-        TitleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(175)
-            make.top.equalToSuperview().inset(50)
-            make.height.equalTo(50)
-        }
         
         Dotori_Image.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(30)
@@ -239,17 +229,17 @@ class ViewController: UIViewController {
         }
         NOCustomer.snp.makeConstraints{ make in
             make.leading.equalToSuperview().inset(100)
-            make.top.equalToSuperview().inset(680)
+            make.bottom.equalTo(LogIn.snp.top).offset(-36)
             make.height.equalTo(52)
         }
         SignIn.snp.makeConstraints{ make in
             make.leading.equalToSuperview().inset(220)
-            make.top.equalToSuperview().inset(680)
+            make.bottom.equalTo(LogIn.snp.top).offset(-36)
             make.height.equalTo(52)
         }
         LogIn.snp.makeConstraints{ make in
             make.leading.trailing.equalToSuperview().inset(30)
-            make.top.equalToSuperview().inset(750)
+            make.bottom.equalTo(view.safeAreaInsets).inset(24)
             make.height.equalTo(52)
         }
     }

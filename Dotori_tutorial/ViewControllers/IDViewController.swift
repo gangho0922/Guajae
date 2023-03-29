@@ -20,7 +20,7 @@ class IDViewController: UIViewController {
     
     let CackCutton: UIButton = {
         let CC = UIButton()
-        CC.setImage(UIImage(named: "Dismiss_x"), for: .normal)
+        CC.setImage(UIImage(systemName: "xmark"), for: .normal)
         CC.contentVerticalAlignment = .fill
         CC.contentHorizontalAlignment = .fill
         CC.addTarget(self, action: #selector(dissmissViewController), for: .touchUpInside)
@@ -29,11 +29,11 @@ class IDViewController: UIViewController {
     }()
     
     let CigLabel: UILabel = {
-        let CLC = UILabel()
-        CLC.text = "비밀번호 찾기"
-        CLC.textColor = .systemGray
-        CLC.font = UIFont.systemFont(ofSize: 20)
-        return CLC
+        let label = UILabel()
+        label.text = "비밀번호 찾기"
+        label.textColor = .systemGray
+        label.font = UIFont.systemFont(ofSize: 20)
+        return label
     }()
     //각 버튼과 라벨 등의 커스텀 부분
     
