@@ -11,6 +11,8 @@
 		3D444C7529D20D0E0025B509 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D444C7429D20D0E0025B509 /* SignUpViewController.swift */; };
 		3D444C7729D21B5B0025B509 /* SeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D444C7629D21B5B0025B509 /* SeekViewController.swift */; };
 		3D444C7929D220720025B509 /* IDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D444C7829D220720025B509 /* IDViewController.swift */; };
+		3D444C7B29D47ABD0025B509 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D444C7A29D47ABD0025B509 /* Colors.xcassets */; };
+		3D444C8129DAE5F00025B509 /* SignPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D444C8029DAE5F00025B509 /* SignPasswordViewController.swift */; };
 		3D697C7129D1D70B00D0CE41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D697C7029D1D70B00D0CE41 /* AppDelegate.swift */; };
 		3D697C7329D1D70B00D0CE41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D697C7229D1D70B00D0CE41 /* SceneDelegate.swift */; };
 		3D697C7529D1D70B00D0CE41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D697C7429D1D70B00D0CE41 /* ViewController.swift */; };
@@ -24,6 +26,8 @@
 		3D444C7429D20D0E0025B509 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3D444C7629D21B5B0025B509 /* SeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekViewController.swift; sourceTree = "<group>"; };
 		3D444C7829D220720025B509 /* IDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDViewController.swift; sourceTree = "<group>"; };
+		3D444C7A29D47ABD0025B509 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		3D444C8029DAE5F00025B509 /* SignPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignPasswordViewController.swift; sourceTree = "<group>"; };
 		3D697C6D29D1D70B00D0CE41 /* Dotori_tutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dotori_tutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D697C7029D1D70B00D0CE41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D697C7229D1D70B00D0CE41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +52,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D444C7C29D47AE60025B509 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3D697C7029D1D70B00D0CE41 /* AppDelegate.swift */,
+				3D697C7229D1D70B00D0CE41 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3D444C7E29D47AFA0025B509 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3D697C7429D1D70B00D0CE41 /* ViewController.swift */,
+				3D444C7429D20D0E0025B509 /* SignUpViewController.swift */,
+				3D444C8029DAE5F00025B509 /* SignPasswordViewController.swift */,
+				3D444C7229D1FA610025B509 /* HomeViewController.swift */,
+				3D444C7629D21B5B0025B509 /* SeekViewController.swift */,
+				3D444C7829D220720025B509 /* IDViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3D444C7F29D47B040025B509 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3D697C7B29D1D70C00D0CE41 /* LaunchScreen.storyboard */,
+				3D697C7929D1D70C00D0CE41 /* Assets.xcassets */,
+				3D444C7A29D47ABD0025B509 /* Colors.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		3D697C6429D1D70B00D0CE41 = {
 			isa = PBXGroup;
 			children = (
@@ -69,15 +105,9 @@
 		3D697C6F29D1D70B00D0CE41 /* Dotori_tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				3D697C7029D1D70B00D0CE41 /* AppDelegate.swift */,
-				3D697C7229D1D70B00D0CE41 /* SceneDelegate.swift */,
-				3D697C7429D1D70B00D0CE41 /* ViewController.swift */,
-				3D444C7229D1FA610025B509 /* HomeViewController.swift */,
-				3D444C7429D20D0E0025B509 /* SignUpViewController.swift */,
-				3D444C7629D21B5B0025B509 /* SeekViewController.swift */,
-				3D444C7829D220720025B509 /* IDViewController.swift */,
-				3D697C7929D1D70C00D0CE41 /* Assets.xcassets */,
-				3D697C7B29D1D70C00D0CE41 /* LaunchScreen.storyboard */,
+				3D444C7F29D47B040025B509 /* Resources */,
+				3D444C7E29D47AFA0025B509 /* ViewControllers */,
+				3D444C7C29D47AE60025B509 /* App */,
 				3D697C7E29D1D70C00D0CE41 /* Info.plist */,
 			);
 			path = Dotori_tutorial;
@@ -161,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D697C7D29D1D70C00D0CE41 /* LaunchScreen.storyboard in Resources */,
+				3D444C7B29D47ABD0025B509 /* Colors.xcassets in Resources */,
 				3D697C7A29D1D70C00D0CE41 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,6 +249,7 @@
 				3D697C7129D1D70B00D0CE41 /* AppDelegate.swift in Sources */,
 				3D444C7729D21B5B0025B509 /* SeekViewController.swift in Sources */,
 				3D444C7929D220720025B509 /* IDViewController.swift in Sources */,
+				3D444C8129DAE5F00025B509 /* SignPasswordViewController.swift in Sources */,
 				3D697C7329D1D70B00D0CE41 /* SceneDelegate.swift in Sources */,
 				3D444C7329D1FA610025B509 /* HomeViewController.swift in Sources */,
 				3D444C7529D20D0E0025B509 /* SignUpViewController.swift in Sources */,

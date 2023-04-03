@@ -21,21 +21,21 @@ class SeekViewController: UIViewController {
     
     
     let BackToButton: UIButton = {
-        let BBB = UIButton()
-        BBB.setImage(UIImage(named: "Dismiss_x"), for: .normal)
-        BBB.contentVerticalAlignment = .fill
-        BBB.contentHorizontalAlignment = .fill
-        BBB.addTarget(self, action: #selector(dissmissViewController), for: .touchUpInside)
-        BBB.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        return BBB
+        let BackToButton = UIButton()
+        BackToButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        BackToButton.contentVerticalAlignment = .fill
+        BackToButton.contentHorizontalAlignment = .fill
+        BackToButton.addTarget(self, action: #selector(dissmissViewController), for: .touchUpInside)
+        BackToButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        return BackToButton
     }()
     
-    let BigLabelBig: UILabel = {
-        let BLB = UILabel()
-        BLB.text = "아이디 찾기"
-        BLB.textColor = .systemGray
-        BLB.font = UIFont.systemFont(ofSize: 20)
-        return BLB
+    let BigLabel: UILabel = {
+        let BigLabel = UILabel()
+        BigLabel.text = "아이디 찾기"
+        BigLabel.textColor = .systemGray
+        BigLabel.font = UIFont.systemFont(ofSize: 20)
+        return BigLabel
     }()
     //각 버튼과 라벨 등의 커스텀 부분
     
@@ -51,7 +51,7 @@ class SeekViewController: UIViewController {
     
     func addView() {
         self.view.addSubview(BackToButton)
-        self.view.addSubview(BigLabelBig)
+        self.view.addSubview(BigLabel)
     }
     //addSubView 정리본
     
@@ -66,7 +66,7 @@ class SeekViewController: UIViewController {
             make.height.equalTo(20)
             make.width.equalTo(20)
         }
-        BigLabelBig.snp.makeConstraints { make in
+        BigLabel.snp.makeConstraints { make in
             make.center.equalTo(view.snp.center)
         }
     }

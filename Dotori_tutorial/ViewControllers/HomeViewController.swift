@@ -24,11 +24,11 @@ class HomeViewController: UIViewController {
     
 
     let BigLabel: UILabel = {
-        let BL = UILabel()
-        BL.text = "메인"
-        BL.textColor = .systemGray
-        BL.font = UIFont.systemFont(ofSize: 20)
-        return BL
+        let BigLabel = UILabel()
+        BigLabel.text = "메인"
+        BigLabel.textColor = .systemGray
+        BigLabel.font = UIFont.systemFont(ofSize: 20)
+        return BigLabel
     }()
     ///각 버튼과 라벨 등의 커스텀 부분
     

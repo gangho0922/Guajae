@@ -18,22 +18,22 @@ class IDViewController: UIViewController {
     }
     
     
-    let CackCutton: UIButton = {
-        let CC = UIButton()
-        CC.setImage(UIImage(systemName: "xmark"), for: .normal)
-        CC.contentVerticalAlignment = .fill
-        CC.contentHorizontalAlignment = .fill
-        CC.addTarget(self, action: #selector(dissmissViewController), for: .touchUpInside)
-        CC.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        return CC
+    let BackButton: UIButton = {
+        let BackButton = UIButton()
+        BackButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        BackButton.contentVerticalAlignment = .fill
+        BackButton.contentHorizontalAlignment = .fill
+        BackButton.addTarget(self, action: #selector(dissmissViewController), for: .touchUpInside)
+        BackButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        return BackButton
     }()
     
     let CigLabel: UILabel = {
-        let label = UILabel()
-        label.text = "비밀번호 찾기"
-        label.textColor = .systemGray
-        label.font = UIFont.systemFont(ofSize: 20)
-        return label
+        let CigLabel = UILabel()
+        CigLabel.text = "비밀번호 찾기"
+        CigLabel.textColor = .systemGray
+        CigLabel.font = UIFont.systemFont(ofSize: 20)
+        return CigLabel
     }()
     //각 버튼과 라벨 등의 커스텀 부분
     
@@ -47,14 +47,14 @@ class IDViewController: UIViewController {
     
     
     func addView() {
-        self.view.addSubview(CackCutton)
+        self.view.addSubview(BackButton)
         self.view.addSubview(CigLabel)
     }
     //addSubView 정리본
     
     
     func location() {
-        CackCutton.snp.makeConstraints{ make in
+        BackButton.snp.makeConstraints{ make in
             make.leading.equalTo(20)
             make.top.equalToSuperview().inset(65)
             make.height.equalTo(20)
