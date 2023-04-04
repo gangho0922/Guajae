@@ -12,10 +12,9 @@ class ViewController: UIViewController {
     
     var isSecurePassword = true
     
-    // MARK: - Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         loginfirtextfield.delegate = self
         loginsectextfield.delegate = self
         self.navigationItem.title = "로그인"
@@ -26,10 +25,9 @@ class ViewController: UIViewController {
         //전체 위치 설정 함수
         ShownPassword()
         //안보이게 버튼 커스텀
+        configNavigation()
         eyeButton.addTarget(self, action: #selector(eyeButtonDidTap(_:)), for: .touchUpInside)
         // 안보이게 버튼을 활성화하기 위해 selector로 eyeButtonDidTap 지정
-        secondstackView.addArrangedSubview(nocustomerlabel)
-        secondstackView.addArrangedSubview(signinbutton)
         firststackView.addArrangedSubview(seekidbutton)
         firststackView.addArrangedSubview(stickLabel)
         firststackView.addArrangedSubview(RePasswordbutton)
@@ -43,7 +41,7 @@ class ViewController: UIViewController {
     @objc func signupscreen() {
         let GOSIGNUP = SignUpViewController()
         navigationController?.pushViewController(GOSIGNUP, animated: true)
-        self.navigationItem.title = ""
+//        self.navigationItem.title = ""
     }
     //push 활용 전환 방법
     @objc func presentViewController() {
@@ -57,7 +55,7 @@ class ViewController: UIViewController {
         ID.modalPresentationStyle = .fullScreen
         self.present(ID, animated: true, completion: nil)
     }
-    //present방식 화면 다 덮는 방법
+    ///present방식 화면 다 덮는 방법
     
     
     
@@ -82,9 +80,7 @@ class ViewController: UIViewController {
         self.eyeButton.setImage(UIImage(systemName: isSecurePassword ? "eye" : "eye.fill"), for: .normal)
         loginsectextfield.isSecureTextEntry = isSecurePassword
     }
-    //비밀번호 안보이거나 보이게 하는 부분
-    
-    // MARK: - Properties
+    ///비밀번호 안보이거나 보이게 하는 부분
     
     let dotoriimageview: UIImageView = {
         let DI = UIImageView()
@@ -152,19 +148,16 @@ class ViewController: UIViewController {
         return RePasswordbutton
     }()
     
-    let nocustomerlabel: UILabel = {
-        let nocustomerlabel = UILabel()
-        nocustomerlabel.text = "아직 회원이 아니신가요?"
-        nocustomerlabel.textColor = .systemGray
-        nocustomerlabel.font = UIFont.boldSystemFont(ofSize: 12.0)
-        return nocustomerlabel
-    }()
     let signinbutton: UIButton = {
         let signinbutton = UIButton()
-        signinbutton.setTitle("회원가입", for: .normal)
-        signinbutton.setTitleColor(.black, for: .normal)
-        signinbutton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12.0)
+        let attributedString = NSMutableAttributedString(string: "아직 회원이 아니신가요? 회원가입")
+        attributedString.addAttribute(.underlineStyle, value: [], range: NSRange(location: 14, length: 4))
+        attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: NSRange(location: 14, length: 4))
+        signinbutton.setAttributedTitle(attributedString, for: .normal)
+        signinbutton.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
+        signinbutton.setTitleColor(.systemGray, for: .normal)
         signinbutton.addTarget(target, action: #selector(signupscreen), for: .touchUpInside)
+        
         return signinbutton
     }()
     let loginbutton: UIButton = {
@@ -184,16 +177,7 @@ class ViewController: UIViewController {
         firststackView.translatesAutoresizingMaskIntoConstraints = false
         return firststackView
     }()
-    let secondstackView: UIStackView = {
-        let secondstackView = UIStackView()
-        secondstackView.axis = .horizontal
-        secondstackView.alignment = .firstBaseline
-        secondstackView.spacing = 10
-        secondstackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return secondstackView
-    }()
-    //각 버튼과 라벨 등의 커스텀 부분 및 타겟 지정
+    ///각 버튼과 라벨 등의 커스텀 부분 및 타겟 지정
     
     func addView() {
         self.view.addSubview(dotoriimageview)
@@ -203,11 +187,11 @@ class ViewController: UIViewController {
         self.view.addSubview(loginsectextfield)
         self.view.addSubview(seekidbutton)
         self.view.addSubview(RePasswordbutton)
+        self.view.addSubview(signinbutton)
         self.view.addSubview(loginbutton)
         self.view.addSubview(firststackView)
-        self.view.addSubview(secondstackView)
     }
-    //addsubview 정리본
+    ///addsubview 정리본
     
     
     
@@ -231,29 +215,34 @@ class ViewController: UIViewController {
         }
         loginfirtextfield.snp.makeConstraints{ make in
             make.leading.trailing.equalToSuperview().inset(24)
-            make.top.equalToSuperview().inset(250)
+            make.top.equalTo(loginsublabel.snp.bottom).inset(-54)
             make.height.equalTo(52)
         }
         loginsectextfield.snp.makeConstraints{ make in
             make.leading.trailing.equalToSuperview().inset(24)
-            make.top.equalToSuperview().inset(323)
+            make.top.equalTo(loginfirtextfield.snp.bottom).inset(-24)
             make.height.equalTo(52)
         }
         firststackView.snp.makeConstraints{ make in
             make.leading.equalTo(195)
             make.top.equalTo(loginsectextfield.snp.bottom).offset(24)
         }
-        secondstackView.snp.makeConstraints{ make in
-            make.leading.trailing.equalToSuperview().inset(103)
+        signinbutton.snp.makeConstraints{ make in
+            make.centerX.equalToSuperview()
             make.bottom.equalTo(loginbutton.snp.top).inset(-36)
         }
         loginbutton.snp.makeConstraints{ make in
             make.leading.trailing.equalToSuperview().inset(30)
-            make.bottom.equalTo(view.safeAreaInsets).inset(24)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
             make.height.equalTo(52)
         }
     }
-    //각 버튼이나 라벨 등의 위치 설정부분
+
+    func configNavigation() {
+        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        backButton.tintColor = .black
+        self.navigationItem.backBarButtonItem = backButton
+    }
 }
 extension ViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {

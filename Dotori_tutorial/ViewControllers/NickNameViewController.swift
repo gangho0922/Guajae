@@ -1,12 +1,14 @@
 //
-//  SignUpViewController.swift
+//  NickNameViewController.swift
 //  Dotori_tutorial
 //
-//  Created by AnnKangHo on 2023/03/28.
+//  Created by AnnKangHo on 2023/04/04.
 //
+
 import UIKit
 import SnapKit
-class SignUpViewController: UIViewController {
+
+class NickNameViewController: UIViewController {
     
     let mainlabel: UILabel = {
         let mainlabel = UILabel()
@@ -30,66 +32,53 @@ class SignUpViewController: UIViewController {
     }()
     let belowlabel: UILabel = {
         let belowlabel = UILabel()
-        belowlabel.text = "아이디는 최소 4자에서 최대 20자까지 가능합니다."
+        belowlabel.text = "비밀번호는 최소 4자에서 최대 20자까지 가능합니다."
         belowlabel.textColor = .black
         belowlabel.font = .systemFont(ofSize: 12)
         return belowlabel
     }()
-    let idTextfield: UITextField = {
-        let idTextfield = UITextField()
-        idTextfield.backgroundColor = .white
-        idTextfield.layer.borderColor = UIColor.black.cgColor
-        idTextfield.layer.borderWidth = 1.0
-        idTextfield.layer.cornerRadius = 8
-        idTextfield.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
-        idTextfield.leftViewMode = .always
-        idTextfield.placeholder = "아이디"
-        return idTextfield
+    let textfield: UITextField = {
+        let textfield = UITextField()
+        textfield.backgroundColor = .white
+        textfield.layer.borderColor = UIColor.black.cgColor
+        textfield.layer.borderWidth = 1.0
+        textfield.layer.cornerRadius = 8
+        textfield.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
+        textfield.leftViewMode = .always
+        textfield.placeholder = "닉네임"
+        return textfield
     }()
-    let idbutton: UIButton = {
-        let idbutton = UIButton()
-        idbutton.setTitle("다음", for: .normal)
-        idbutton.setTitleColor(.white, for: .normal)
-        idbutton.titleLabel?.font = UIFont.systemFont(ofSize: 16.0)
-        idbutton.backgroundColor = UIColor(named: "NoCheckButtonColor")
-        idbutton.layer.cornerRadius = 8
-        return idbutton
+    let button: UIButton = {
+        let button = UIButton()
+        button.setTitle("로그인", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0)
+        button.backgroundColor = UIColor(named: "NoCheckButtonColor")
+        button.layer.cornerRadius = 8
+        return button
     }()
-    ///각 버튼과 라벨 등의 커스텀 부분
-    
-    @objc func signupviewcontroller(){
-        let signupviewcontroller = SignPasswordViewController()
-        navigationController?.pushViewController(signupviewcontroller, animated: true)
-    }
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        idTextfield.delegate = self
-        
-        self.navigationController?.navigationBar.tintColor = .black
-        self.navigationItem.title = "회원가입"
-        view.backgroundColor = .white
+        self.view.backgroundColor = .white
+        navigationItem.title = "회원가입"
+        textfield.delegate = self
         addView()
-        ///전체 addSubView함수
         location()
-        ///전체 위치 선정 함수
         configNavigation()
+    }
+    
+    @objc func nicknameviewcontroller() {
+        let nicknameviewcontroller = CompleteViewController()
+        navigationController?.pushViewController(nicknameviewcontroller, animated: true)
     }
     func addView() {
         self.view.addSubview(dotoriimageview)
         self.view.addSubview(mainlabel)
         self.view.addSubview(sublabel)
         self.view.addSubview(belowlabel)
-        self.view.addSubview(idTextfield)
-        self.view.addSubview(idbutton)
+        self.view.addSubview(textfield)
+        self.view.addSubview(button)
     }
-    ///addSubView 정리본
-    
-    
-    
-    
     func location() {
         dotoriimageview.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(30)
@@ -112,36 +101,33 @@ class SignUpViewController: UIViewController {
             make.top.equalTo(sublabel.snp.bottom).inset(0)
             make.height.equalTo(26)
         }
-        idTextfield.snp.makeConstraints{ make in
+        textfield.snp.makeConstraints{ make in
             make.leading.trailing.equalToSuperview().inset(24)
             make.top.equalTo(belowlabel.snp.bottom).inset(-28)
             make.height.equalTo(52)
         }
-        idbutton.snp.makeConstraints{ make in
+        button.snp.makeConstraints{ make in
             make.leading.trailing.equalToSuperview().inset(30)
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
             make.height.equalTo(52)
         }
     }
-    ///위치 설정 정리본
-    
     func configNavigation() {
         let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         backButton.tintColor = .black
         self.navigationItem.backBarButtonItem = backButton
     }
 }
-extension SignUpViewController: UITextFieldDelegate {
+extension NickNameViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        if let count = idTextfield.text?.count, count >= 4 && count <= 20 {
-            idbutton.backgroundColor = UIColor(named: "ButtonColor")
-            idbutton.isUserInteractionEnabled = true
-            idbutton.addTarget(self, action: #selector(signupviewcontroller), for: .touchUpInside)
+        if let count = textField.text?.count, count >= 4 && count <= 20 {
+            button.backgroundColor = UIColor(named: "ButtonColor")
+            button.isUserInteractionEnabled = true
+            button.addTarget(self, action: #selector(nicknameviewcontroller), for: .touchUpInside)
         }
         else{
-            idbutton.backgroundColor = UIColor(named: "NoCheckButtonColor")
-            idbutton.isUserInteractionEnabled = false
+            button.backgroundColor = UIColor(named: "NoCheckButtonColor")
+            button.isUserInteractionEnabled = false
         }
     }
 }
-

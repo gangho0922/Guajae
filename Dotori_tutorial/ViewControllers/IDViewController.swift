@@ -44,8 +44,6 @@ class IDViewController: UIViewController {
     }
     //dismiss 활용
     
-    
-    
     func addView() {
         self.view.addSubview(BackButton)
         self.view.addSubview(CigLabel)
