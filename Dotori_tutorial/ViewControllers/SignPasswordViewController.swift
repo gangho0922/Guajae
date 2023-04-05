@@ -10,13 +10,6 @@ import SnapKit
 
 class SignPasswordViewController: UIViewController {
    
-    
-    var firsteyeButton = UIButton(type : .custom)
-    
-    var secondeyeButton = UIButton(type : .custom)
-    
-    var isSecurePassword = true
-    
     let mainlabel: UILabel = {
         let mainlabel = UILabel()
         mainlabel.text = "Dotori"
@@ -94,6 +87,13 @@ class SignPasswordViewController: UIViewController {
         let signpasswordviewcontroller = NickNameViewController()
         navigationController?.pushViewController(signpasswordviewcontroller, animated: true)
     }
+    
+    
+    var firsteyeButton = UIButton(type : .custom)
+    
+    var secondeyeButton = UIButton(type : .custom)
+    
+    var isSecurePassword = true
     
     func firstshownpassword(){
         firsteyeButton = .init()

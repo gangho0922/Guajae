@@ -11,15 +11,13 @@ class SeekViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        ///전체 addSubView 함수
         addView()
-        //전체 addSubView 함수
+        ///전체 위치 선정 함수
         location()
-        //전체 위치 선정 함수
     }
     
-    
-    
-    
+    //각 버튼과 라벨 등의 커스텀 부분
     let BackToButton: UIButton = {
         let BackToButton = UIButton()
         BackToButton.setImage(UIImage(systemName: "xmark"), for: .normal)
@@ -37,28 +35,18 @@ class SeekViewController: UIViewController {
         BigLabel.font = UIFont.systemFont(ofSize: 20)
         return BigLabel
     }()
-    //각 버튼과 라벨 등의 커스텀 부분
     
-    
-    
+    ///dismiss 활용
     @objc func dissmissViewController() {
         dismiss(animated: true, completion: nil)
     }
-    //dismiss 활용
     
-    
-    
-    
+    ///addSubView 정리본
     func addView() {
         self.view.addSubview(BackToButton)
         self.view.addSubview(BigLabel)
     }
-    //addSubView 정리본
-    
-    
-    
-    
-    
+    //위치 선정 정리본
     func location() {
         BackToButton.snp.makeConstraints{ make in
             make.leading.equalTo(20)
@@ -70,5 +58,4 @@ class SeekViewController: UIViewController {
             make.center.equalTo(view.snp.center)
         }
     }
-    //위치 선정 정리본
 }

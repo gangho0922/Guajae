@@ -8,80 +8,7 @@ import UIKit
 import SnapKit
 class ViewController: UIViewController {
     
-    var eyeButton = UIButton(type : .custom)
-    
-    var isSecurePassword = true
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        loginfirtextfield.delegate = self
-        loginsectextfield.delegate = self
-        self.navigationItem.title = "로그인"
-        self.view.backgroundColor = .white
-        addView()
-        //전체 addSubView 함수
-        location()
-        //전체 위치 설정 함수
-        ShownPassword()
-        //안보이게 버튼 커스텀
-        configNavigation()
-        eyeButton.addTarget(self, action: #selector(eyeButtonDidTap(_:)), for: .touchUpInside)
-        // 안보이게 버튼을 활성화하기 위해 selector로 eyeButtonDidTap 지정
-        firststackView.addArrangedSubview(seekidbutton)
-        firststackView.addArrangedSubview(stickLabel)
-        firststackView.addArrangedSubview(RePasswordbutton)
-    }
-    /// asdsda
-    @objc func secondscreen() {
-        let SEC = HomeViewController()
-        navigationController?.setViewControllers([SEC], animated: true)
-    }
-    //set 활용 전환 방법
-    @objc func signupscreen() {
-        let GOSIGNUP = SignUpViewController()
-        navigationController?.pushViewController(GOSIGNUP, animated: true)
-//        self.navigationItem.title = ""
-    }
-    //push 활용 전환 방법
-    @objc func presentViewController() {
-        let Seek = SeekViewController()
-        Seek.modalTransitionStyle = .coverVertical
-        self.present(Seek, animated: true, completion: nil)
-    }
-    //present방식 화면 덜 덮는 방법
-    @objc func seeViewController() {
-        let ID = IDViewController()
-        ID.modalPresentationStyle = .fullScreen
-        self.present(ID, animated: true, completion: nil)
-    }
-    ///present방식 화면 다 덮는 방법
-    
-    
-    
-    
-    
-    func ShownPassword(){
-        eyeButton = .init()
-        loginsectextfield.isSecureTextEntry = isSecurePassword
-        var buttonConfiguration = UIButton.Configuration.plain()
-        buttonConfiguration.imagePadding = 10
-        buttonConfiguration.baseBackgroundColor = .clear
-        self.eyeButton.setImage(UIImage(systemName: isSecurePassword ? "eye" : "eye.fill"), for: .normal)
-        self.eyeButton.configuration = buttonConfiguration
-
-        self.loginsectextfield.rightView = eyeButton
-        
-        self.loginsectextfield.rightViewMode = .always
-    }
-    
-    @objc func eyeButtonDidTap(_ sender: UIButton) {
-        isSecurePassword.toggle()
-        self.eyeButton.setImage(UIImage(systemName: isSecurePassword ? "eye" : "eye.fill"), for: .normal)
-        loginsectextfield.isSecureTextEntry = isSecurePassword
-    }
-    ///비밀번호 안보이거나 보이게 하는 부분
-    
+    ///각 버튼과 라벨 등의 커스텀 부분 및 타겟 지정
     let dotoriimageview: UIImageView = {
         let DI = UIImageView()
         DI.image = UIImage(named: "Dotori_Icon")
@@ -177,8 +104,89 @@ class ViewController: UIViewController {
         firststackView.translatesAutoresizingMaskIntoConstraints = false
         return firststackView
     }()
-    ///각 버튼과 라벨 등의 커스텀 부분 및 타겟 지정
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        loginfirtextfield.delegate = self
+        loginsectextfield.delegate = self
+        self.navigationItem.title = "로그인"
+        self.view.backgroundColor = .white
+        ///전체 addSubView 함수
+        addView()
+        ///전체 위치 설정 함수
+        location()
+        ///안보이게 버튼 커스텀
+        ShownPassword()
+        ///navigationbar 커스텀
+        configNavigation()
+        /// 안보이게 버튼을 활성화하기 위해 selector로 eyeButtonDidTap 지정
+        eyeButton.addTarget(self,
+                            action: #selector(eyeButtonDidTap(_:)),
+                            for: .touchUpInside)
+    }
+    ///set 활용 전환 방법
+    @objc func secondscreen() {
+        let SEC = HomeViewController()
+        navigationController?.setViewControllers(
+            [SEC],
+            animated: true
+        )
+    }
+    ///push 활용 전환 방법
+    @objc func signupscreen() {
+        let GOSIGNUP = SignUpViewController()
+        navigationController?.pushViewController(
+            GOSIGNUP,
+            animated: true
+        )
+    }
+    ///present방식 화면 덜 덮는 방법
+    @objc func presentViewController() {
+        let Seek = SeekViewController()
+        Seek.modalTransitionStyle = .coverVertical
+        self.present(
+            Seek,
+            animated: true,
+            completion: nil
+        )
+    }
+    ///present방식 화면 다 덮는 방법
+    @objc func seeViewController() {
+        let ID = IDViewController()
+        ID.modalPresentationStyle = .fullScreen
+        self.present(
+            ID,
+            animated: true,
+            completion: nil
+        )
+    }
+    ///비밀번호 안보이거나 보이게 하는 부분
+
+    var eyeButton = UIButton(type : .custom)
+    
+    var isSecurePassword = true
+    
+    func ShownPassword(){
+        eyeButton = .init()
+        loginsectextfield.isSecureTextEntry = isSecurePassword
+        var buttonConfiguration = UIButton.Configuration.plain()
+        buttonConfiguration.imagePadding = 10
+        buttonConfiguration.baseBackgroundColor = .clear
+        self.eyeButton.setImage(UIImage(systemName: isSecurePassword ? "eye" : "eye.fill"), for: .normal)
+        self.eyeButton.configuration = buttonConfiguration
+
+        self.loginsectextfield.rightView = eyeButton
+        
+        self.loginsectextfield.rightViewMode = .always
+    }
+    
+    @objc func eyeButtonDidTap(_ sender: UIButton) {
+        isSecurePassword.toggle()
+        self.eyeButton.setImage(UIImage(systemName: isSecurePassword ? "eye" : "eye.fill"), for: .normal)
+        loginsectextfield.isSecureTextEntry = isSecurePassword
+    }
+    ///addsubview 정리본
     func addView() {
         self.view.addSubview(dotoriimageview)
         self.view.addSubview(loginmainlabel)
@@ -190,11 +198,11 @@ class ViewController: UIViewController {
         self.view.addSubview(signinbutton)
         self.view.addSubview(loginbutton)
         self.view.addSubview(firststackView)
+        firststackView.addArrangedSubview(seekidbutton)
+        firststackView.addArrangedSubview(stickLabel)
+        firststackView.addArrangedSubview(RePasswordbutton)
     }
-    ///addsubview 정리본
-    
-    
-    
+    ///위치 설정 정리본
     func location() {
         
         dotoriimageview.snp.makeConstraints { make in
@@ -237,13 +245,19 @@ class ViewController: UIViewController {
             make.height.equalTo(52)
         }
     }
-
+    ///navigationbar 커스텀
     func configNavigation() {
-        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        let backButton = UIBarButtonItem(
+            title: "",
+            style: .plain,
+            target: nil,
+            action: nil
+        )
         backButton.tintColor = .black
         self.navigationItem.backBarButtonItem = backButton
     }
 }
+///button change event
 extension ViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if textField == loginfirtextfield {
@@ -254,7 +268,11 @@ extension ViewController: UITextFieldDelegate {
             else{
                 loginbutton.backgroundColor = UIColor(named: "ButtonColor")
                 loginbutton.isUserInteractionEnabled = true
-                loginbutton.addTarget(self, action: #selector(secondscreen), for: .touchUpInside)
+                loginbutton.addTarget(
+                    self,
+                    action: #selector(secondscreen),
+                    for: .touchUpInside
+                )
             }
         }
         else if textField == loginsectextfield {
@@ -265,7 +283,11 @@ extension ViewController: UITextFieldDelegate {
             else{
                 loginbutton.backgroundColor = UIColor(named: "ButtonColor")
                 loginbutton.isUserInteractionEnabled = true
-                loginbutton.addTarget(self, action: #selector(secondscreen), for: .touchUpInside)
+                loginbutton.addTarget(
+                    self,
+                    action: #selector(secondscreen),
+                    for: .touchUpInside
+                )
             }
         }
     }

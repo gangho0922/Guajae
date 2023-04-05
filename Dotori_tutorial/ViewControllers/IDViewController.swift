@@ -8,16 +8,8 @@
 import UIKit
 import SnapKit
 class IDViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        addView()
-        //전체 addSubView함수
-        location()
-        //전체 위치 선정 함수
-    }
     
-    
+    ///각 버튼과 라벨 등의 커스텀 부분
     let BackButton: UIButton = {
         let BackButton = UIButton()
         BackButton.setImage(UIImage(systemName: "xmark"), for: .normal)
@@ -35,22 +27,24 @@ class IDViewController: UIViewController {
         CigLabel.font = UIFont.systemFont(ofSize: 20)
         return CigLabel
     }()
-    //각 버튼과 라벨 등의 커스텀 부분
-    
-    
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        ///전체 addSubView함수
+        addView()
+        ///전체 위치 선정 함수
+        location()
+    }
+    ///dismiss 활용
     @objc func dissmissViewController() {
         dismiss(animated: true, completion: nil)
     }
-    //dismiss 활용
-    
+    ///addSubView 정리본
     func addView() {
         self.view.addSubview(BackButton)
         self.view.addSubview(CigLabel)
     }
-    //addSubView 정리본
-    
-    
+    ///위치 설정 정리본
     func location() {
         BackButton.snp.makeConstraints{ make in
             make.leading.equalTo(20)
@@ -62,6 +56,4 @@ class IDViewController: UIViewController {
             make.center.equalTo(view.snp.center)
         }
     }
-    
-    //위치 설정 정리본
 }

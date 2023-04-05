@@ -57,13 +57,6 @@ class SignUpViewController: UIViewController {
     }()
     ///각 버튼과 라벨 등의 커스텀 부분
     
-    @objc func signupviewcontroller(){
-        let signupviewcontroller = SignPasswordViewController()
-        navigationController?.pushViewController(signupviewcontroller, animated: true)
-    }
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         idTextfield.delegate = self
@@ -85,10 +78,16 @@ class SignUpViewController: UIViewController {
         self.view.addSubview(idTextfield)
         self.view.addSubview(idbutton)
     }
+    
+    @objc func signupviewcontroller(){
+        let signupviewcontroller = SignPasswordViewController()
+        navigationController?.pushViewController(
+            signupviewcontroller,
+            animated: true
+        )
+    }
+    
     ///addSubView 정리본
-    
-    
-    
     
     func location() {
         dotoriimageview.snp.makeConstraints { make in
@@ -126,17 +125,27 @@ class SignUpViewController: UIViewController {
     ///위치 설정 정리본
     
     func configNavigation() {
-        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        let backButton = UIBarButtonItem(
+            title: "",
+            style: .plain,
+            target: nil,
+            action: nil
+        )
         backButton.tintColor = .black
         self.navigationItem.backBarButtonItem = backButton
     }
 }
+
 extension SignUpViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if let count = idTextfield.text?.count, count >= 4 && count <= 20 {
             idbutton.backgroundColor = UIColor(named: "ButtonColor")
             idbutton.isUserInteractionEnabled = true
-            idbutton.addTarget(self, action: #selector(signupviewcontroller), for: .touchUpInside)
+            idbutton.addTarget(
+                self,
+                action: #selector(signupviewcontroller),
+                for: .touchUpInside
+            )
         }
         else{
             idbutton.backgroundColor = UIColor(named: "NoCheckButtonColor")
