@@ -9,45 +9,18 @@ import SnapKit
 class ViewController: UIViewController {
     
     ///각 버튼과 라벨 등의 커스텀 부분 및 타겟 지정
-    let dotoriimageview: UIImageView = {
-        let DI = UIImageView()
-        DI.image = UIImage(named: "Dotori_Icon")
-        
-        return DI
-    }()
-    let loginmainlabel: UILabel = {
-        let loginmainlabel = UILabel()
-        loginmainlabel.text = "Dotori"
-        loginmainlabel.textColor = .black
-        loginmainlabel.font = UIFont.boldSystemFont(ofSize: 32)
-        return loginmainlabel
-    }()
-    let loginsublabel: UILabel = {
-        let loginsublabel = UILabel()
-        loginsublabel.text = "더 편한 기숙사 생활을 위해"
-        loginsublabel.textColor = .black
-        loginsublabel.font = .systemFont(ofSize: 16)
-        return loginsublabel
+    let authheadercustomview: UIView = {
+        let authheadercustomview = AuthHeaderCustomView()
+        authheadercustomview.sublabel.text = "더 편한 기숙사 생활을 위해"
+        return authheadercustomview
     }()
     let loginfirtextfield: UITextField = {
-        let loginfirtextfield = UITextField()
-        loginfirtextfield.backgroundColor = .white
-        loginfirtextfield.layer.borderColor = UIColor.black.cgColor
-        loginfirtextfield.layer.borderWidth = 1.0
-        loginfirtextfield.layer.cornerRadius = 8
-        loginfirtextfield.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
-        loginfirtextfield.leftViewMode = .always
+        let loginfirtextfield = CustomTextField()
         loginfirtextfield.placeholder = "로그인"
         return loginfirtextfield
     }()
     let loginsectextfield: UITextField = {
-        let loginsectextfield = UITextField()
-        loginsectextfield.backgroundColor = .white
-        loginsectextfield.layer.borderColor = UIColor.black.cgColor
-        loginsectextfield.layer.borderWidth = 1.0
-        loginsectextfield.layer.cornerRadius = 8
-        loginsectextfield.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
-        loginsectextfield.leftViewMode = .always
+        let loginsectextfield = CustomTextField()
         loginsectextfield.placeholder = "비밀번호"
         return loginsectextfield
     }()
@@ -57,7 +30,6 @@ class ViewController: UIViewController {
         seekidbutton.setTitle("아이디 찾기", for: .normal)
         seekidbutton.setTitleColor(.systemGray, for: .normal)
         seekidbutton.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
-        seekidbutton.addTarget(target, action: #selector(presentViewController), for: .touchUpInside)
         return seekidbutton
     }()
     let stickLabel: UILabel = {
@@ -71,7 +43,6 @@ class ViewController: UIViewController {
         RePasswordbutton.setTitle("비밀번호 재설정", for: .normal)
         RePasswordbutton.setTitleColor(.systemGray, for: .normal)
         RePasswordbutton.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
-        RePasswordbutton.addTarget(target, action: #selector(seeViewController), for: .touchUpInside)
         return RePasswordbutton
     }()
     
@@ -83,17 +54,12 @@ class ViewController: UIViewController {
         signinbutton.setAttributedTitle(attributedString, for: .normal)
         signinbutton.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
         signinbutton.setTitleColor(.systemGray, for: .normal)
-        signinbutton.addTarget(target, action: #selector(signupscreen), for: .touchUpInside)
         
         return signinbutton
     }()
     let loginbutton: UIButton = {
-        let loginbutton = UIButton()
+        let loginbutton = CustomButton()
         loginbutton.setTitle("로그인", for: .normal)
-        loginbutton.setTitleColor(.white, for: .normal)
-        loginbutton.titleLabel?.font = UIFont.systemFont(ofSize: 16.0)
-        loginbutton.backgroundColor = UIColor(named: "NoCheckButtonColor")
-        loginbutton.layer.cornerRadius = 8
         return loginbutton
     }()
     let firststackView: UIStackView = {
@@ -120,10 +86,8 @@ class ViewController: UIViewController {
         ShownPassword()
         ///navigationbar 커스텀
         configNavigation()
-        /// 안보이게 버튼을 활성화하기 위해 selector로 eyeButtonDidTap 지정
-        eyeButton.addTarget(self,
-                            action: #selector(eyeButtonDidTap(_:)),
-                            for: .touchUpInside)
+        ///addtarget 모음
+        addtarget()
     }
     ///set 활용 전환 방법
     @objc func secondscreen() {
@@ -161,6 +125,21 @@ class ViewController: UIViewController {
             completion: nil
         )
     }
+    
+    func addtarget(){
+        eyeButton.addTarget(self,
+                            action: #selector(eyeButtonDidTap(_:)),
+                            for: .touchUpInside)
+        signinbutton.addTarget(self,
+                               action: #selector(signupscreen),
+                               for: .touchUpInside)
+        seekidbutton.addTarget(self,
+                               action: #selector(presentViewController),
+                               for: .touchUpInside)
+        RePasswordbutton.addTarget(self,
+                                   action: #selector(seeViewController),
+                                   for: .touchUpInside)
+    }
     ///비밀번호 안보이거나 보이게 하는 부분
 
     var eyeButton = UIButton(type : .custom)
@@ -173,7 +152,7 @@ class ViewController: UIViewController {
         var buttonConfiguration = UIButton.Configuration.plain()
         buttonConfiguration.imagePadding = 10
         buttonConfiguration.baseBackgroundColor = .clear
-        self.eyeButton.setImage(UIImage(systemName: isSecurePassword ? "eye" : "eye.fill"), for: .normal)
+        self.eyeButton.setImage(UIImage(systemName: isSecurePassword ? "eye.fill" : "eye.slash.fill")?.withTintColor(.systemGray, renderingMode: .alwaysOriginal), for: .normal)
         self.eyeButton.configuration = buttonConfiguration
 
         self.loginsectextfield.rightView = eyeButton
@@ -183,14 +162,12 @@ class ViewController: UIViewController {
     
     @objc func eyeButtonDidTap(_ sender: UIButton) {
         isSecurePassword.toggle()
-        self.eyeButton.setImage(UIImage(systemName: isSecurePassword ? "eye" : "eye.fill"), for: .normal)
+        self.eyeButton.setImage(UIImage(systemName: isSecurePassword ? "eye.fill" : "eye.slash.fill")?.withTintColor(.systemGray    , renderingMode: .alwaysOriginal), for: .normal)
         loginsectextfield.isSecureTextEntry = isSecurePassword
     }
     ///addsubview 정리본
     func addView() {
-        self.view.addSubview(dotoriimageview)
-        self.view.addSubview(loginmainlabel)
-        self.view.addSubview(loginsublabel)
+        self.view.addSubview(authheadercustomview)
         self.view.addSubview(loginfirtextfield)
         self.view.addSubview(loginsectextfield)
         self.view.addSubview(seekidbutton)
@@ -205,25 +182,10 @@ class ViewController: UIViewController {
     ///위치 설정 정리본
     func location() {
         
-        dotoriimageview.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(30)
-            make.top.equalTo(view.safeAreaInsets).offset(121)
-            make.height.equalTo(48)
-            make.width.equalTo(48)
-        }
-        loginmainlabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(85)
-            make.top.equalTo(view.safeAreaInsets).offset(131)
-            make.height.equalTo(26)
-        }
-        loginsublabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(30)
-            make.top.equalTo(loginmainlabel.snp.bottom).inset(-20)
-            make.height.equalTo(26)
-        }
+        
         loginfirtextfield.snp.makeConstraints{ make in
             make.leading.trailing.equalToSuperview().inset(24)
-            make.top.equalTo(loginsublabel.snp.bottom).inset(-54)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(166)
             make.height.equalTo(52)
         }
         loginsectextfield.snp.makeConstraints{ make in

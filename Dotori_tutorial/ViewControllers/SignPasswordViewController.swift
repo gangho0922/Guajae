@@ -10,62 +10,30 @@ import SnapKit
 
 class SignPasswordViewController: UIViewController {
    
-    let mainlabel: UILabel = {
-        let mainlabel = UILabel()
-        mainlabel.text = "Dotori"
-        mainlabel.textColor = .black
-        mainlabel.font = UIFont.boldSystemFont(ofSize: 32)
-        return mainlabel
+    let authheadercustomview: UIView = {
+        let authheadercustomview = AuthHeaderCustomView()
+        authheadercustomview.sublabel.text = "사용하실 아이디를 입력해주세요."
+        return authheadercustomview
     }()
-    let dotoriimageview: UIImageView = {
-        let DI = UIImageView()
-        DI.image = UIImage(named: "Dotori_Icon")
-        
-        return DI
-    }()
+
     let sublabel: UILabel = {
-        let sublabel = UILabel()
-        sublabel.text = "사용하실 아이디를 입력해주세요."
-        sublabel.textColor = .black
-        sublabel.font = .systemFont(ofSize: 16)
+        let sublabel = SubLabel()
+        sublabel.text = "비밀번호는 최소 8자에서 최대 40자까지 가능합니다"
         return sublabel
     }()
-    let belowlabel: UILabel = {
-        let belowlabel = UILabel()
-        belowlabel.text = "비밀번호는 최소 8자에서 최대 40자까지 가능합니다."
-        belowlabel.textColor = .black
-        belowlabel.font = .systemFont(ofSize: 12)
-        return belowlabel
-    }()
     let passwordfirtextfield: UITextField = {
-        let passwordfirtextfield = UITextField()
-        passwordfirtextfield.backgroundColor = .white
-        passwordfirtextfield.layer.borderColor = UIColor.black.cgColor
-        passwordfirtextfield.layer.borderWidth = 1.0
-        passwordfirtextfield.layer.cornerRadius = 8
-        passwordfirtextfield.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
-        passwordfirtextfield.leftViewMode = .always
-        passwordfirtextfield.placeholder = "로그인"
+        let passwordfirtextfield = CustomTextField()
+        passwordfirtextfield.placeholder = "비밀번호"
         return passwordfirtextfield
     }()
     let passwordsectextfield: UITextField = {
-        let passwordsectextfield = UITextField()
-        passwordsectextfield.backgroundColor = .white
-        passwordsectextfield.layer.borderColor = UIColor.black.cgColor
-        passwordsectextfield.layer.borderWidth = 1.0
-        passwordsectextfield.layer.cornerRadius = 8
-        passwordsectextfield.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
-        passwordsectextfield.leftViewMode = .always
-        passwordsectextfield.placeholder = "비밀번호"
+        let passwordsectextfield = CustomTextField()
+        passwordsectextfield.placeholder = "비밀번호 재입력"
         return passwordsectextfield
     }()
     let passwordbutton: UIButton = {
-        let passwordbutton = UIButton()
+        let passwordbutton = CustomButton()
         passwordbutton.setTitle("다음", for: .normal)
-        passwordbutton.setTitleColor(.white, for: .normal)
-        passwordbutton.titleLabel?.font = UIFont.systemFont(ofSize: 16.0)
-        passwordbutton.backgroundColor = UIColor(named: "NoCheckButtonColor")
-        passwordbutton.layer.cornerRadius = 8
         return passwordbutton
     }()
     override func viewDidLoad() {
@@ -79,8 +47,7 @@ class SignPasswordViewController: UIViewController {
         firstshownpassword()
         secshownpassword()
         configNavigation()
-        firsteyeButton.addTarget(self, action: #selector(firsteyeButtonDidTap(_:)), for: .touchUpInside)
-        secondeyeButton.addTarget(self, action: #selector(secondeyeButtonDidTap(_:)), for: .touchUpInside)
+        addtarget()
     }
     
     @objc func signpasswordviewcontroller() {
@@ -88,6 +55,14 @@ class SignPasswordViewController: UIViewController {
         navigationController?.pushViewController(signpasswordviewcontroller, animated: true)
     }
     
+    func addtarget() {
+        firsteyeButton.addTarget(self,
+                                 action: #selector(firsteyeButtonDidTap(_:)),
+                                 for: .touchUpInside)
+        secondeyeButton.addTarget(self,
+                                  action: #selector(secondeyeButtonDidTap(_:)),
+                                  for: .touchUpInside)
+    }
     
     var firsteyeButton = UIButton(type : .custom)
     
@@ -101,7 +76,7 @@ class SignPasswordViewController: UIViewController {
         var buttonConfiguration = UIButton.Configuration.plain()
         buttonConfiguration.imagePadding = 10
         buttonConfiguration.baseBackgroundColor = .clear
-        self.firsteyeButton.setImage(UIImage(systemName: isSecurePassword ? "eye" : "eye.fill"), for: .normal)
+        self.firsteyeButton.setImage(UIImage(systemName: isSecurePassword ? "eye.fill" : "eye.slash.fill")?.withTintColor(.systemGray, renderingMode: .alwaysOriginal), for: .normal)
         self.firsteyeButton.configuration = buttonConfiguration
 
         self.passwordfirtextfield.rightView = firsteyeButton
@@ -115,7 +90,7 @@ class SignPasswordViewController: UIViewController {
         var buttonConfiguration = UIButton.Configuration.plain()
         buttonConfiguration.imagePadding = 10
         buttonConfiguration.baseBackgroundColor = .clear
-        self.secondeyeButton.setImage(UIImage(systemName: isSecurePassword ? "eye" : "eye.fill"), for: .normal)
+        self.secondeyeButton.setImage(UIImage(systemName: isSecurePassword ? "eye.fill" : "eye.slash.fill")?.withTintColor(.systemGray, renderingMode: .alwaysOriginal), for: .normal)
         self.secondeyeButton.configuration = buttonConfiguration
 
         self.passwordsectextfield.rightView = secondeyeButton
@@ -125,50 +100,31 @@ class SignPasswordViewController: UIViewController {
     
     @objc func firsteyeButtonDidTap(_ sender: UIButton) {
         isSecurePassword.toggle()
-        self.firsteyeButton.setImage(UIImage(systemName: isSecurePassword ? "eye" : "eye.fill"), for: .normal)
+        self.firsteyeButton.setImage(UIImage(systemName: isSecurePassword ? "eye.fill" : "eye.slash.fill")?.withTintColor(.systemGray, renderingMode: .alwaysOriginal), for: .normal)
         passwordfirtextfield.isSecureTextEntry = isSecurePassword
     }
     @objc func secondeyeButtonDidTap(_ sender: UIButton) {
         isSecurePassword.toggle()
-        self.secondeyeButton.setImage(UIImage(systemName: isSecurePassword ? "eye" : "eye.fill"), for: .normal)
+        self.secondeyeButton.setImage(UIImage(systemName: isSecurePassword ? "eye.fill" : "eye.slash.fill")?.withTintColor(.systemGray, renderingMode: .alwaysOriginal), for: .normal)
         passwordsectextfield.isSecureTextEntry = isSecurePassword
     }
     
     
     func addview() {
-        self.view.addSubview(dotoriimageview)
-        self.view.addSubview(mainlabel)
+        self.view.addSubview(authheadercustomview)
         self.view.addSubview(sublabel)
-        self.view.addSubview(belowlabel)
         self.view.addSubview(passwordfirtextfield)
         self.view.addSubview(passwordsectextfield)
         self.view.addSubview(passwordbutton)
     }
     func location() {
-        dotoriimageview.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(30)
-            make.top.equalTo(view.safeAreaInsets).offset(121)
-            make.height.equalTo(48)
-            make.width.equalTo(48)
-        }
-        mainlabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(85)
-            make.top.equalTo(view.safeAreaInsets).offset(131)
-            make.height.equalTo(26)
-        }
         sublabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(30)
-            make.top.equalTo(mainlabel.snp.bottom).inset(-20)
-            make.height.equalTo(26)
-        }
-        belowlabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(30)
-            make.top.equalTo(sublabel.snp.bottom).inset(0)
-            make.height.equalTo(26)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(112)
         }
         passwordfirtextfield.snp.makeConstraints{ make in
             make.leading.trailing.equalToSuperview().inset(24)
-            make.top.equalTo(belowlabel.snp.bottom).inset(-28)
+            make.top.equalTo(sublabel.snp.bottom).inset(-28)
             make.height.equalTo(52)
         }
         passwordsectextfield.snp.makeConstraints{ make in

@@ -24,13 +24,8 @@ class CompleteViewController: UIViewController {
         return sublabel
     }()
     let button: UIButton = {
-        let button = UIButton()
+        let button = OriginColorButton()
         button.setTitle("로그인 하러가기", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0)
-        button.backgroundColor = UIColor(named: "ButtonColor")
-        button.layer.cornerRadius = 8
-        button.addTarget(self, action: #selector(completeviewcontroller), for: .touchUpInside)
         return button
     }()
     override func viewDidLoad() {
@@ -39,12 +34,18 @@ class CompleteViewController: UIViewController {
         navigationItem.title = "회원가입"
         addview()
         location()
+        addtarget()
     }
     
     @objc func completeviewcontroller() {
         navigationController?.popToRootViewController(animated: true)
     }
     
+    func addtarget() {
+        button.addTarget(self,
+                         action: #selector(completeviewcontroller),
+                         for: .touchUpInside)
+    }
     func addview() {
         self.view.addSubview(completelabel)
         self.view.addSubview(sublabel)
