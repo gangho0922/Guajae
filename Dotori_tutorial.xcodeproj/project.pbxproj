@@ -15,6 +15,8 @@
 		3D444C8129DAE5F00025B509 /* SignPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D444C8029DAE5F00025B509 /* SignPasswordViewController.swift */; };
 		3D444C8329DB3A100025B509 /* NickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D444C8229DB3A100025B509 /* NickNameViewController.swift */; };
 		3D444C8529DBF6FD0025B509 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D444C8429DBF6FD0025B509 /* CompleteViewController.swift */; };
+		3D4F2D2529F944D8003F0E19 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4F2D2429F944D8003F0E19 /* NetworkResult.swift */; };
+		3D4F2D2829FA65FE003F0E19 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3D4F2D2729FA65FE003F0E19 /* Alamofire */; };
 		3D697C7129D1D70B00D0CE41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D697C7029D1D70B00D0CE41 /* AppDelegate.swift */; };
 		3D697C7329D1D70B00D0CE41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D697C7229D1D70B00D0CE41 /* SceneDelegate.swift */; };
 		3D697C7529D1D70B00D0CE41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D697C7429D1D70B00D0CE41 /* ViewController.swift */; };
@@ -25,6 +27,8 @@
 		3D8C877529DF0BF500E5CC8D /* SubLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8C877429DF0BF500E5CC8D /* SubLabel.swift */; };
 		3D8C877929DF197B00E5CC8D /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8C877829DF197B00E5CC8D /* CustomButton.swift */; };
 		3D8C877B29DF1D0200E5CC8D /* OriginColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8C877A29DF1D0200E5CC8D /* OriginColorButton.swift */; };
+		3DD8B53E29E3003800FA7134 /* DotoriColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8B53D29E3003800FA7134 /* DotoriColor.swift */; };
+		3DD8B55F29E532E500FA7134 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD8B55E29E532E500FA7134 /* BaseVC.swift */; };
 		6B5CDBC8D736C5DDE4203A39 /* Pods_Dotori_tutorial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76F881370251082021C8DE04 /* Pods_Dotori_tutorial.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +41,7 @@
 		3D444C8029DAE5F00025B509 /* SignPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignPasswordViewController.swift; sourceTree = "<group>"; };
 		3D444C8229DB3A100025B509 /* NickNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameViewController.swift; sourceTree = "<group>"; };
 		3D444C8429DBF6FD0025B509 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
+		3D4F2D2429F944D8003F0E19 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		3D697C6D29D1D70B00D0CE41 /* Dotori_tutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dotori_tutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D697C7029D1D70B00D0CE41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D697C7229D1D70B00D0CE41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +54,8 @@
 		3D8C877429DF0BF500E5CC8D /* SubLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubLabel.swift; sourceTree = "<group>"; };
 		3D8C877829DF197B00E5CC8D /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		3D8C877A29DF1D0200E5CC8D /* OriginColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginColorButton.swift; sourceTree = "<group>"; };
+		3DD8B53D29E3003800FA7134 /* DotoriColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotoriColor.swift; sourceTree = "<group>"; };
+		3DD8B55E29E532E500FA7134 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		720EEE021208D7971FE8EEE3 /* Pods-Dotori_tutorial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dotori_tutorial.debug.xcconfig"; path = "Target Support Files/Pods-Dotori_tutorial/Pods-Dotori_tutorial.debug.xcconfig"; sourceTree = "<group>"; };
 		76F881370251082021C8DE04 /* Pods_Dotori_tutorial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dotori_tutorial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		844A4A9F54FA712C0949D8CA /* Pods-Dotori_tutorial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dotori_tutorial.release.xcconfig"; path = "Target Support Files/Pods-Dotori_tutorial/Pods-Dotori_tutorial.release.xcconfig"; sourceTree = "<group>"; };
@@ -60,6 +67,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B5CDBC8D736C5DDE4203A39 /* Pods_Dotori_tutorial.framework in Frameworks */,
+				3D4F2D2829FA65FE003F0E19 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,14 +86,11 @@
 		3D444C7E29D47AFA0025B509 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3D697C7429D1D70B00D0CE41 /* ViewController.swift */,
-				3D444C7429D20D0E0025B509 /* SignUpViewController.swift */,
-				3D444C8029DAE5F00025B509 /* SignPasswordViewController.swift */,
-				3D444C8229DB3A100025B509 /* NickNameViewController.swift */,
-				3D444C8429DBF6FD0025B509 /* CompleteViewController.swift */,
-				3D444C7229D1FA610025B509 /* HomeViewController.swift */,
-				3D444C7629D21B5B0025B509 /* SeekViewController.swift */,
-				3D444C7829D220720025B509 /* IDViewController.swift */,
+				3DD8B55929E5242000FA7134 /* Repassword */,
+				3DD8B55829E5237900FA7134 /* Login */,
+				3DD8B55729E5234D00FA7134 /* SeekID */,
+				3DD8B55629E5232F00FA7134 /* Main */,
+				3DD8B55529E5230500FA7134 /* Signup */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -121,25 +126,119 @@
 		3D697C6F29D1D70B00D0CE41 /* Dotori_tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				3D8C877329DF0BD400E5CC8D /* Custom */,
+				3DD8B55D29E532D300FA7134 /* Base */,
+				3DD8B53B29E3002F00FA7134 /* Utils */,
+				3D8C877329DF0BD400E5CC8D /* Views */,
 				3D444C7F29D47B040025B509 /* Resources */,
 				3D444C7E29D47AFA0025B509 /* ViewControllers */,
 				3D444C7C29D47AE60025B509 /* App */,
 				3D697C7E29D1D70C00D0CE41 /* Info.plist */,
+				3D4F2D2429F944D8003F0E19 /* NetworkResult.swift */,
 			);
 			path = Dotori_tutorial;
 			sourceTree = "<group>";
 		};
-		3D8C877329DF0BD400E5CC8D /* Custom */ = {
+		3D8C877329DF0BD400E5CC8D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3DD8B55C29E5245F00FA7134 /* Textfield */,
+				3DD8B55B29E5244C00FA7134 /* Button */,
+				3DD8B55A29E5244000FA7134 /* Label */,
 				3D8C876F29DDB35B00E5CC8D /* AuthHeaderCustomView.swift */,
-				3D8C877129DF0A8D00E5CC8D /* CustomTextField.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3DD8B53B29E3002F00FA7134 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3DD8B53C29E3003200FA7134 /* Color */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		3DD8B53C29E3003200FA7134 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				3DD8B53D29E3003800FA7134 /* DotoriColor.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		3DD8B55529E5230500FA7134 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				3D444C7429D20D0E0025B509 /* SignUpViewController.swift */,
+				3D444C8029DAE5F00025B509 /* SignPasswordViewController.swift */,
+				3D444C8229DB3A100025B509 /* NickNameViewController.swift */,
+				3D444C8429DBF6FD0025B509 /* CompleteViewController.swift */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		3DD8B55629E5232F00FA7134 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				3D444C7229D1FA610025B509 /* HomeViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		3DD8B55729E5234D00FA7134 /* SeekID */ = {
+			isa = PBXGroup;
+			children = (
+				3D444C7629D21B5B0025B509 /* SeekViewController.swift */,
+			);
+			path = SeekID;
+			sourceTree = "<group>";
+		};
+		3DD8B55829E5237900FA7134 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				3D697C7429D1D70B00D0CE41 /* ViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		3DD8B55929E5242000FA7134 /* Repassword */ = {
+			isa = PBXGroup;
+			children = (
+				3D444C7829D220720025B509 /* IDViewController.swift */,
+			);
+			path = Repassword;
+			sourceTree = "<group>";
+		};
+		3DD8B55A29E5244000FA7134 /* Label */ = {
+			isa = PBXGroup;
+			children = (
 				3D8C877429DF0BF500E5CC8D /* SubLabel.swift */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
+		3DD8B55B29E5244C00FA7134 /* Button */ = {
+			isa = PBXGroup;
+			children = (
 				3D8C877829DF197B00E5CC8D /* CustomButton.swift */,
 				3D8C877A29DF1D0200E5CC8D /* OriginColorButton.swift */,
 			);
-			path = Custom;
+			path = Button;
+			sourceTree = "<group>";
+		};
+		3DD8B55C29E5245F00FA7134 /* Textfield */ = {
+			isa = PBXGroup;
+			children = (
+				3D8C877129DF0A8D00E5CC8D /* CustomTextField.swift */,
+			);
+			path = Textfield;
+			sourceTree = "<group>";
+		};
+		3DD8B55D29E532D300FA7134 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				3DD8B55E29E532E500FA7134 /* BaseVC.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		73AEEAE349649E31B8698403 /* Pods */ = {
@@ -177,6 +276,9 @@
 			dependencies = (
 			);
 			name = Dotori_tutorial;
+			packageProductDependencies = (
+				3D4F2D2729FA65FE003F0E19 /* Alamofire */,
+			);
 			productName = Dotori_tutorial;
 			productReference = 3D697C6D29D1D70B00D0CE41 /* Dotori_tutorial.app */;
 			productType = "com.apple.product-type.application";
@@ -205,6 +307,9 @@
 				Base,
 			);
 			mainGroup = 3D697C6429D1D70B00D0CE41;
+			packageReferences = (
+				3D4F2D2629FA65FE003F0E19 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 3D697C6E29D1D70B00D0CE41 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -275,7 +380,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D697C7529D1D70B00D0CE41 /* ViewController.swift in Sources */,
+				3DD8B55F29E532E500FA7134 /* BaseVC.swift in Sources */,
 				3D444C8329DB3A100025B509 /* NickNameViewController.swift in Sources */,
+				3D4F2D2529F944D8003F0E19 /* NetworkResult.swift in Sources */,
 				3D697C7129D1D70B00D0CE41 /* AppDelegate.swift in Sources */,
 				3D444C7729D21B5B0025B509 /* SeekViewController.swift in Sources */,
 				3D8C877929DF197B00E5CC8D /* CustomButton.swift in Sources */,
@@ -286,6 +393,7 @@
 				3D8C877029DDB35B00E5CC8D /* AuthHeaderCustomView.swift in Sources */,
 				3D8C877229DF0A8D00E5CC8D /* CustomTextField.swift in Sources */,
 				3D444C7329D1FA610025B509 /* HomeViewController.swift in Sources */,
+				3DD8B53E29E3003800FA7134 /* DotoriColor.swift in Sources */,
 				3D444C8529DBF6FD0025B509 /* CompleteViewController.swift in Sources */,
 				3D8C877529DF0BF500E5CC8D /* SubLabel.swift in Sources */,
 				3D444C7529D20D0E0025B509 /* SignUpViewController.swift in Sources */,
@@ -498,6 +606,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3D4F2D2629FA65FE003F0E19 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3D4F2D2729FA65FE003F0E19 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D4F2D2629FA65FE003F0E19 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3D697C6529D1D70B00D0CE41 /* Project object */;
 }

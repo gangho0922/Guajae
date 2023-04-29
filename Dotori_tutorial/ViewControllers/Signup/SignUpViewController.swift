@@ -8,17 +8,10 @@ import UIKit
 import SnapKit
 class SignUpViewController: UIViewController {
     
-    let authheadercustomview: UIView = {
-        let authheadercustomview = AuthHeaderCustomView()
-        authheadercustomview.sublabel.text = "사용하실 아이디를 입력해주세요."
-        return authheadercustomview
-    }()
+    let authheadercustomview = AuthHeaderCustomView(description: "사용하실 아이디를 입력해주세요.")
 
-    let sublabel: UILabel = {
-        let sublabel = SubLabel()
-        sublabel.text = "아이디는 최소 4자에서 최대 20자까지 가능합니다"
-        return sublabel
-    }()
+    let sublabel = SubLabel(description: "아이디는 최소 4자에서 최대 20자까지 가능합니다")
+    
     let idTextfield: UITextField = {
         let idTextfield = CustomTextField()
         idTextfield.placeholder = "아이디"
@@ -51,7 +44,7 @@ class SignUpViewController: UIViewController {
         self.view.addSubview(idbutton)
     }
     
-    @objc func signupviewcontroller(){
+    @objc func idButtonDidTap(){
         let signupviewcontroller = SignPasswordViewController()
         navigationController?.pushViewController(
             signupviewcontroller,
@@ -62,11 +55,6 @@ class SignUpViewController: UIViewController {
     ///addSubView 정리본
     
     func location() {
-        sublabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(30)
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(112)
-            make.height.equalTo(26)
-        }
         idTextfield.snp.makeConstraints{ make in
             make.leading.trailing.equalToSuperview().inset(24)
             make.top.equalTo(sublabel.snp.bottom).inset(-28)
@@ -99,7 +87,7 @@ extension SignUpViewController: UITextFieldDelegate {
             idbutton.isUserInteractionEnabled = true
             idbutton.addTarget(
                 self,
-                action: #selector(signupviewcontroller),
+                action: #selector(idButtonDidTap),
                 for: .touchUpInside
             )
         }

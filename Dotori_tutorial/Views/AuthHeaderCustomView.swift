@@ -22,7 +22,7 @@ class AuthHeaderCustomView: UIView {
         mainlabel.font = UIFont.boldSystemFont(ofSize: 32)
         return mainlabel
     }()
-    let sublabel: UILabel = {
+    private let sublabel: UILabel = {
         let sublabel = UILabel()
         sublabel.textColor = .black
         sublabel.font = .systemFont(ofSize: 16)
@@ -34,6 +34,13 @@ class AuthHeaderCustomView: UIView {
         commonInit()
         location()
     }
+    init(description: String) {
+        super.init(frame: .zero)
+        sublabel.text = description
+        commonInit()
+        location()
+    }
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()

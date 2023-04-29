@@ -4,6 +4,7 @@
 //
 //  Created by AnnKangHo on 2023/04/07.
 //
+
 import UIKit
 
 class OriginColorButton: UIButton {
@@ -18,7 +19,7 @@ class OriginColorButton: UIButton {
     func commoninit() {
         setTitleColor(.white, for: .normal)
         titleLabel?.font = UIFont.systemFont(ofSize: 16.0)
-        backgroundColor = UIColor(named: "ButtonColor")
+        backgroundColor = .buttonColor
         layer.cornerRadius = 8
     }
 }

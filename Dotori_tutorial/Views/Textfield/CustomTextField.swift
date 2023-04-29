@@ -17,6 +17,11 @@ class CustomTextField: UITextField {
         super.init(coder: coder)
         commoninit()
     }
+    init(description: String){
+        super.init(frame: .zero)
+        placeholder = description
+        commoninit()
+    }
     func commoninit() {
         backgroundColor = .white
         layer.borderColor = UIColor.black.cgColor

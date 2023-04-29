@@ -37,13 +37,13 @@ class CompleteViewController: UIViewController {
         addtarget()
     }
     
-    @objc func completeviewcontroller() {
+    @objc func completeButtonDidTap() {
         navigationController?.popToRootViewController(animated: true)
     }
     
     func addtarget() {
         button.addTarget(self,
-                         action: #selector(completeviewcontroller),
+                         action: #selector(completeButtonDidTap),
                          for: .touchUpInside)
     }
     func addview() {

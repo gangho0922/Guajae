@@ -10,11 +10,7 @@ import SnapKit
 
 class SignPasswordViewController: UIViewController {
    
-    let authheadercustomview: UIView = {
-        let authheadercustomview = AuthHeaderCustomView()
-        authheadercustomview.sublabel.text = "사용하실 아이디를 입력해주세요."
-        return authheadercustomview
-    }()
+    let authheadercustomview = AuthHeaderCustomView(description: "사용하실 아이디를 입력해주세요.")
 
     let sublabel: UILabel = {
         let sublabel = SubLabel()
@@ -50,7 +46,7 @@ class SignPasswordViewController: UIViewController {
         addtarget()
     }
     
-    @objc func signpasswordviewcontroller() {
+    @objc func passwordButtonDidTap() {
         let signpasswordviewcontroller = NickNameViewController()
         navigationController?.pushViewController(signpasswordviewcontroller, animated: true)
     }
@@ -150,7 +146,7 @@ extension SignPasswordViewController: UITextFieldDelegate {
             if let count = passwordfirtextfield.text?.count, count <= 40 && count >= 8 {
                 passwordbutton.backgroundColor = UIColor(named: "ButtonColor")
                 passwordbutton.isUserInteractionEnabled = true
-                passwordbutton.addTarget(self, action: #selector(signpasswordviewcontroller), for: .touchUpInside)
+                passwordbutton.addTarget(self, action: #selector(passwordButtonDidTap), for: .touchUpInside)
             }
         }
         else{

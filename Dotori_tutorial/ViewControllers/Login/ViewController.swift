@@ -9,11 +9,7 @@ import SnapKit
 class ViewController: UIViewController {
     
     ///각 버튼과 라벨 등의 커스텀 부분 및 타겟 지정
-    let authheadercustomview: UIView = {
-        let authheadercustomview = AuthHeaderCustomView()
-        authheadercustomview.sublabel.text = "더 편한 기숙사 생활을 위해"
-        return authheadercustomview
-    }()
+    let authheadercustomview = AuthHeaderCustomView(description: "더 편한 기숙사 생활을 위해")
     let loginfirtextfield: UITextField = {
         let loginfirtextfield = CustomTextField()
         loginfirtextfield.placeholder = "로그인"
@@ -90,7 +86,8 @@ class ViewController: UIViewController {
         addtarget()
     }
     ///set 활용 전환 방법
-    @objc func secondscreen() {
+    @objc func loginbuttondidtap() {
+        print("ASDAD")
         let SEC = HomeViewController()
         navigationController?.setViewControllers(
             [SEC],
@@ -98,7 +95,7 @@ class ViewController: UIViewController {
         )
     }
     ///push 활용 전환 방법
-    @objc func signupscreen() {
+    @objc func signinbuttondidtap() {
         let GOSIGNUP = SignUpViewController()
         navigationController?.pushViewController(
             GOSIGNUP,
@@ -106,21 +103,21 @@ class ViewController: UIViewController {
         )
     }
     ///present방식 화면 덜 덮는 방법
-    @objc func presentViewController() {
-        let Seek = SeekViewController()
-        Seek.modalTransitionStyle = .coverVertical
+    @objc func seekidbuttondidtap() {
+        let seekViewController = SeekViewController()
+        seekViewController.modalTransitionStyle = .coverVertical
         self.present(
-            Seek,
+            seekViewController,
             animated: true,
             completion: nil
         )
     }
     ///present방식 화면 다 덮는 방법
-    @objc func seeViewController() {
-        let ID = IDViewController()
-        ID.modalPresentationStyle = .fullScreen
+    @objc func repasswordbuttondidtap() {
+        let idViewController = IDViewController()
+        idViewController.modalPresentationStyle = .fullScreen
         self.present(
-            ID,
+            idViewController,
             animated: true,
             completion: nil
         )
@@ -131,14 +128,17 @@ class ViewController: UIViewController {
                             action: #selector(eyeButtonDidTap(_:)),
                             for: .touchUpInside)
         signinbutton.addTarget(self,
-                               action: #selector(signupscreen),
+                               action: #selector(signinbuttondidtap),
                                for: .touchUpInside)
         seekidbutton.addTarget(self,
-                               action: #selector(presentViewController),
+                               action: #selector(seekidbuttondidtap),
                                for: .touchUpInside)
         RePasswordbutton.addTarget(self,
-                                   action: #selector(seeViewController),
+                                   action: #selector(repasswordbuttondidtap),
                                    for: .touchUpInside)
+        loginbutton.addTarget(self,
+                              action: #selector(loginbuttondidtap),
+                              for: .touchUpInside)
     }
     ///비밀번호 안보이거나 보이게 하는 부분
 
@@ -229,12 +229,7 @@ extension ViewController: UITextFieldDelegate {
             }
             else{
                 loginbutton.backgroundColor = UIColor(named: "ButtonColor")
-                loginbutton.isUserInteractionEnabled = true
-                loginbutton.addTarget(
-                    self,
-                    action: #selector(secondscreen),
-                    for: .touchUpInside
-                )
+                loginbutton.isEnabled = true
             }
         }
         else if textField == loginsectextfield {
@@ -245,11 +240,6 @@ extension ViewController: UITextFieldDelegate {
             else{
                 loginbutton.backgroundColor = UIColor(named: "ButtonColor")
                 loginbutton.isUserInteractionEnabled = true
-                loginbutton.addTarget(
-                    self,
-                    action: #selector(secondscreen),
-                    for: .touchUpInside
-                )
             }
         }
     }

@@ -19,7 +19,7 @@ class CustomButton: UIButton {
     func commoninit() {
         setTitleColor(.white, for: .normal)
         titleLabel?.font = UIFont.systemFont(ofSize: 16.0)
-        backgroundColor = UIColor(named: "NoCheckButtonColor")
+        backgroundColor = .noCheckButtonColor
         layer.cornerRadius = 8
     }
 }

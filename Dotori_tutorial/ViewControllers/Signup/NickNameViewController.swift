@@ -8,14 +8,11 @@
 import UIKit
 import SnapKit
 
-class NickNameViewController: UIViewController {
+final class NickNameViewController: UIViewController {
     
-    let authheadercustomview: UIView = {
-        let authheadercustomview = AuthHeaderCustomView()
-        authheadercustomview.sublabel.text = "사용하실 아이디를 입력해주세요."
-        return authheadercustomview
-    }()
+    // MARK: Properties
 
+    let authheadercustomview = AuthHeaderCustomView(description: "사용하실 아이디를 입력해주세요.")
     let sublabel: UILabel = {
         let sublabel = SubLabel()
         sublabel.text = "아이디는 최소 4자에서 최대 20자까지 가능합니다"
@@ -31,6 +28,9 @@ class NickNameViewController: UIViewController {
         button.setTitle("로그인", for: .normal)
         return button
     }()
+
+    // MARK: Life cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -41,12 +41,8 @@ class NickNameViewController: UIViewController {
         configNavigation()
     }
     
-    @objc func nicknameviewcontroller() {
-        let nicknameviewcontroller = CompleteViewController()
-        navigationController?.pushViewController(
-            nicknameviewcontroller,
-            animated: true)
-    }
+    // MARK: internal function
+
     func addView() {
         self.view.addSubview(authheadercustomview)
         self.view.addSubview(sublabel)
@@ -75,16 +71,28 @@ class NickNameViewController: UIViewController {
         self.navigationItem.backBarButtonItem = backButton
     }
 }
+
 extension NickNameViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if let count = textField.text?.count, count >= 4 && count <= 20 {
             button.backgroundColor = UIColor(named: "ButtonColor")
             button.isUserInteractionEnabled = true
-            button.addTarget(self, action: #selector(nicknameviewcontroller), for: .touchUpInside)
+            button.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
         }
         else{
             button.backgroundColor = UIColor(named: "NoCheckButtonColor")
             button.isUserInteractionEnabled = false
         }
+    }
+}
+
+// MARK: Action objc만 모아둠
+extension NickNameViewController {
+    @objc func nextButtonDidTap() {
+        let nicknameviewcontroller = CompleteViewController()
+        navigationController?.pushViewController(
+            nicknameviewcontroller,
+            animated: true
+        )
     }
 }
